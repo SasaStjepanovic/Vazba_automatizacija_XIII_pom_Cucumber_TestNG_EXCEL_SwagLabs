@@ -1,17 +1,19 @@
-package pages.sauce_demo;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pages.BasePage;
-import pages.booking.components.FooterComponent;
-import pages.booking.components.HeaderComponent;
+import org.testng.Assert;
+import pages.components.FooterComponent;
+import pages.components.HeaderComponent;
 
-public class SwagLabsInventoryPage extends BasePage {
+import java.util.List;
 
-    HeaderComponent headerComponent;
+public class SwagLabsInventoryPage extends BasePage{
+
+    public HeaderComponent headerComponent;
     FooterComponent footerComponent;
 
     public SwagLabsInventoryPage(WebDriver driver) {
@@ -24,20 +26,38 @@ public class SwagLabsInventoryPage extends BasePage {
     @FindBy(css = ".shopping_cart_link")
     WebElement shoppingCart;
 
-    public void clickShoppingCart(){
+    @FindBy(xpath = "//div[@class='header_secondary_container']//span[@class='title']")
+    WebElement titleAfterLogin;
+
+    public void clickShoppingCart(String expectedText){
         clickElement(shoppingCart, "Shopping cart icon");
+        compareText(titleAfterLogin,expectedText.toUpperCase());
     }
 
-    public void clickAddProductByName(String name){
-        clickElement(
-                driver.findElement(By.xpath("//*[text()='"+name+"']/../../..//div[@class='pricebar']//button")),
-                "Add product "+name);
+    public void clickAddProductByName(String name, String textofButtonBeforePressed, String textofButtonAfterPressed) throws InterruptedException {
+        compareText(driver.findElement(By.xpath("//*[text()='"+name+"']/../../..//div[@class='pricebar']//button")),textofButtonBeforePressed.toUpperCase());
+        clickElement(driver.findElement(By.xpath("//*[text()='"+name+"']/../../..//div[@class='pricebar']//button")), "Add product "+name);
+        compareText(driver.findElement(By.xpath("//*[text()='"+name+"']/../../..//div[@class='pricebar']//button")),textofButtonAfterPressed.toUpperCase());
     }
 
-    public void clickAddProductByIndex(int i){
-        clickElement(
-                driver.findElement(By.xpath("//div[@class='inventory_list']/div["+i+"]//button")),
-                "Add product "+i);
+    public void clickAddProductByIndex(int i,String textofButtonBeforePressed, String textofButtonAfterPressed){
+        compareText(driver.findElement(By.xpath("//div[@class='inventory_list']/div["+i+"]//button")),textofButtonBeforePressed.toUpperCase());
+        clickElement(driver.findElement(By.xpath("//div[@class='inventory_list']/div["+i+"]//button")), "Add product "+i);
+        compareText(driver.findElement(By.xpath("//div[@class='inventory_list']/div["+i+"]//button")),textofButtonAfterPressed.toUpperCase());
     }
 
+    public void checkItems(String[] menuItems) throws InterruptedException {
+
+        List<WebElement> menu = driver.findElements(By.cssSelector(".bm-item-list>a"));
+
+        for (int i = 0; i < menu.size(); i++) {
+                String item = menu.get(i).getText();
+                System.out.println("Menu item: " + item );
+                Thread.sleep(1000);
+                Assert.assertTrue(menu.get(i).isDisplayed(), menuItems[i]);
+                Assert.assertEquals(item, menuItems[i], "Menu item not displayed");
+                System.out.println("Menu item: " + item + " ,is displayed");
+
+        }
+    }
 }

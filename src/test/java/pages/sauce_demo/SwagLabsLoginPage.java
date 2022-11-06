@@ -1,13 +1,12 @@
-package pages.sauce_demo;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import pages.BasePage;
 
-public class SwagLabsLoginPage extends BasePage {
+public class SwagLabsLoginPage extends BasePage{
 
     public SwagLabsLoginPage(WebDriver driver) {
         super(driver);
@@ -21,6 +20,13 @@ public class SwagLabsLoginPage extends BasePage {
     @FindBy(css = "#login-button")
     WebElement loginButton;
 
+    @FindBy(xpath = "//div[@class='header_secondary_container']//span[@class='title']")
+    WebElement titleAfterLoginPass;
+
+    @FindBy(xpath = "//form//h3")
+    WebElement titleAfterLoginFail;
+
+    //div[@class="header_secondary_container"]
     public void enterUsername(String value){
         typeText(username,value,"Username input field");
     }
@@ -33,13 +39,17 @@ public class SwagLabsLoginPage extends BasePage {
         clickElement(loginButton, "Login button");
     }
 
-    public void login(String username, String password){
+
+    public void login(String username, String password, String testType, String expectedText) throws InterruptedException {
         enterUsername(username);
         enterPassword(password);
         clickLoginButton();
-    }
-
-    public void verifyInvalidCredentialsErrorMessage(String message){
+        Thread.sleep(2000);
+        if(testType.equalsIgnoreCase("positive")){
+            compareText(titleAfterLoginPass,expectedText);
+        } else {
+            compareText(titleAfterLoginFail,expectedText);
+        }
 
     }
 

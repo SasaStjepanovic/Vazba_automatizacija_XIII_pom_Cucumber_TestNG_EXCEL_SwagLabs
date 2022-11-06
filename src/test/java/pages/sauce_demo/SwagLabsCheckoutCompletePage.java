@@ -1,14 +1,13 @@
-package pages.sauce_demo;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pages.BasePage;
-import pages.booking.components.FooterComponent;
-import pages.booking.components.HeaderComponent;
+import pages.components.FooterComponent;
+import pages.components.HeaderComponent;
 
-public class SwagLabsCheckoutCompletePage extends BasePage {
+public class SwagLabsCheckoutCompletePage extends BasePage{
 
     HeaderComponent headerComponent;
     FooterComponent footerComponent;
@@ -23,8 +22,12 @@ public class SwagLabsCheckoutCompletePage extends BasePage {
     @FindBy(css = "#back-to-products")
     WebElement backToProducts;
 
-    public void clickBackToProducts(){
+    @FindBy(xpath = "//div[@class='header_secondary_container']//span[@class='title']")
+    WebElement titleAfterLogin;
+
+    public void clickBackToProducts(String expectedText){
         clickElement(backToProducts, "Back to products button");
+        compareText(titleAfterLogin,expectedText.toUpperCase());
     }
 
 }

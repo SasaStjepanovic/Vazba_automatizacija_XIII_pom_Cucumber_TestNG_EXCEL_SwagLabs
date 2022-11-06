@@ -1,14 +1,13 @@
-package pages.sauce_demo;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pages.BasePage;
-import pages.booking.components.FooterComponent;
-import pages.booking.components.HeaderComponent;
+import pages.components.FooterComponent;
+import pages.components.HeaderComponent;
 
-public class SwagLabsCheckoutPage extends BasePage {
+public class SwagLabsCheckoutPage extends BasePage{
 
     HeaderComponent headerComponent;
     FooterComponent footerComponent;
@@ -32,6 +31,9 @@ public class SwagLabsCheckoutPage extends BasePage {
     @FindBy(css = "#continue")
     WebElement continueBtn;
 
+    @FindBy(xpath = "//div[@class='header_secondary_container']//span[@class='title']")
+    WebElement titleAfterLogin;
+
     public void enterFirstName(String value){
         typeText(firstName, value, "First name");
     }
@@ -48,11 +50,13 @@ public class SwagLabsCheckoutPage extends BasePage {
         clickElement(continueBtn, "Continue button");
     }
 
-    public void checkout(String firstNameTxt, String lastNameTxt, String zipTxt){
+    public void checkout(String firstNameTxt, String lastNameTxt, String zipTxt, String expectedText){
         enterFirstName(firstNameTxt);
         enterLastName(lastNameTxt);
         enterZip(zipTxt);
         clickContinue();
+        compareText(titleAfterLogin,expectedText.toUpperCase());
     }
+
 
 }

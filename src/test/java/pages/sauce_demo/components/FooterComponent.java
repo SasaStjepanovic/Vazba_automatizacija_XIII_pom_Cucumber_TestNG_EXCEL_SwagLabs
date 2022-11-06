@@ -1,4 +1,4 @@
-package pages.sauce_demo.components;
+package pages.components;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
