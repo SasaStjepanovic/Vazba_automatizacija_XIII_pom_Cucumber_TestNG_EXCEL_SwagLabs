@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Vazba_automatizacija_XIII_pom_Cucumber_EXCEL_SwagLabs" />
+        <module name="STAROO" />
         <module name="Vazba_automatizacija_XIII_pom_TestNG_EXCEL_SwagLabs" />
         <module name="Vazba_automatizacija_XIII" />
         <module name="POM" />
