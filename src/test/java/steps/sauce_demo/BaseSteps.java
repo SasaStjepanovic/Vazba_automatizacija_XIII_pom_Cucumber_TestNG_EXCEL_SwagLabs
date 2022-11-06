@@ -5,8 +5,11 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Reporter;
 import pages.sauce_demo.*;
+import pages.sauce_demo.components.FooterComponent;
 import tests.sauce_demo.BaseTest;
 import pages.sauce_demo.components.HeaderComponent;
 
@@ -14,7 +17,6 @@ import java.io.IOException;
 import java.util.Map;
 
 public class BaseSteps extends BaseTest {
-
     Map<String, String> data;
 
     String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
@@ -88,8 +90,12 @@ public class BaseSteps extends BaseTest {
 
     @And("I clicked menu button")
     public void iClickedMenuButton() {
+        BasePage bp = new BasePage(driver);
+
         SwagLabsInventoryPage slip =new SwagLabsInventoryPage(driver);
+
         slip.headerComponent.clickMenu();
+        slip.clickAllButton("ALL ITEMS");
     }
 
     @Given("I read test data from {string} {string} {string}")

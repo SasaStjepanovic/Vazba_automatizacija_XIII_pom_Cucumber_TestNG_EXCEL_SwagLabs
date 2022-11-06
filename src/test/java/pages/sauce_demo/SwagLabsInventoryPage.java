@@ -23,6 +23,9 @@ public class SwagLabsInventoryPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(css = ".bm-item-list>a")
+    WebElement allItemButton;
+
     @FindBy(css = ".shopping_cart_link")
     WebElement shoppingCart;
 
@@ -32,6 +35,11 @@ public class SwagLabsInventoryPage extends BasePage {
     public void clickShoppingCart(String expectedText){
         clickElement(shoppingCart, "Shopping cart icon");
         compareText(titleAfterLogin,expectedText.toUpperCase());
+    }
+
+    public void clickAllButton(String expectedText){
+        clickElement(allItemButton, "Log for ALL ITEMS button: ");
+        compareText(allItemButton,expectedText.toUpperCase());
     }
 
     public void clickAddProductByName(String name, String textofButtonBeforePressed, String textofButtonAfterPressed) throws InterruptedException {
