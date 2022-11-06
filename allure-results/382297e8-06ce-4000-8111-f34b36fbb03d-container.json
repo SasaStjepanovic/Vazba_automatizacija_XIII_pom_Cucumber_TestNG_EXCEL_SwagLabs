@@ -1,0 +1,1 @@
+{"uuid":"382297e8-06ce-4000-8111-f34b36fbb03d","name":"Scenario: Book a stay","children":["7f761c17-592f-48c0-8923-f5f71bf3c9f1"],"befores":[{"name":"steps.booking.BaseSteps.setup()","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1667410366407,"stop":1667410373013}],"afters":[],"links":[],"start":1667410366401,"stop":1667410414370}
