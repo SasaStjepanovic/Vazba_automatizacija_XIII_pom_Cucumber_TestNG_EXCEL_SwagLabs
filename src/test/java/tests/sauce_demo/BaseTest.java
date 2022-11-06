@@ -1,19 +1,9 @@
-package tests;
+package tests.sauce_demo;
 
-import io.qameta.allure.Allure;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import selenium.DriverManager;
 import selenium.DriverManagerFactory;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {

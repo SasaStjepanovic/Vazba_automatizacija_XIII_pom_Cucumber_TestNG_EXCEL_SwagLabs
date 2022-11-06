@@ -1,10 +1,10 @@
-package pages.components;
+package pages.sauce_demo.components;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pages.BasePage;
+import pages.sauce_demo.BasePage;
 
 public class FooterComponent extends BasePage {
 

@@ -1,12 +1,11 @@
-package pages;
+package pages.sauce_demo;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
-public class SwagLabsLoginPage extends BasePage{
+public class SwagLabsLoginPage extends BasePage {
 
     public SwagLabsLoginPage(WebDriver driver) {
         super(driver);
@@ -43,8 +42,9 @@ public class SwagLabsLoginPage extends BasePage{
     public void login(String username, String password, String testType, String expectedText) throws InterruptedException {
         enterUsername(username);
         enterPassword(password);
-        clickLoginButton();
         Thread.sleep(2000);
+        clickLoginButton();
+
         if(testType.equalsIgnoreCase("positive")){
             compareText(titleAfterLoginPass,expectedText);
         } else {

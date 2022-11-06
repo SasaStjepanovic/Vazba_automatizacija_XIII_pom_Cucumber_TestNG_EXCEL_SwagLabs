@@ -20,14 +20,14 @@ public class ExcelSupport {
 
         int row = Integer.parseInt(rowNum);
 
-        int lastColumnNum = sheet.getRow(1).getLastCellNum();
+        int lastColumnNum = sheet.getRow(2).getLastCellNum();
 
         Map<String, String> data = new HashMap<>();
 
         for(int i = 0; i < lastColumnNum; i++){
             data.put(
-                    sheet.getRow(1).getCell(i).getStringCellValue(),
-                    sheet.getRow((row+1)).getCell(i).getStringCellValue()
+                    sheet.getRow(2).getCell(i).getStringCellValue(),
+                    sheet.getRow((row+2)).getCell(i).getStringCellValue()
             );
         }
 

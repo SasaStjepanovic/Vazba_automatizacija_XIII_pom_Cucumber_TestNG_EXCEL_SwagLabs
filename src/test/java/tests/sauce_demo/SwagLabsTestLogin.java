@@ -1,14 +1,14 @@
-package tests;
+package tests.sauce_demo;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.sauce_demo.BasePage;
+import pages.sauce_demo.SwagLabsLoginPage;
 
 import java.io.IOException;
 
-public class SwagLabsTestLogin extends BaseTest{
+public class SwagLabsTestLogin extends BaseTest {
 
     @BeforeMethod
     public void setup(String browser, String env) throws Exception {

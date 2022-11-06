@@ -3,7 +3,7 @@
 
 <suite name="Product tests" parallel="tests" thread-count="1">
 
-    <parameter name="browser" value="CHROME"/>
+    <parameter name="browser" value="CHROME_H"/>
     <parameter name="env" value="QA"/>
     <parameter name="wait" value="10"/>
     <parameter name="ScrShootName" value="ScrShotBefore"/>
@@ -12,7 +12,7 @@
 
     <test name="SwagLabsTest">
         <classes>
-            <class name="runners.Runner"/>
+            <class name="runners.sauce_demo.Runner"/>
         </classes>
     </test>
 

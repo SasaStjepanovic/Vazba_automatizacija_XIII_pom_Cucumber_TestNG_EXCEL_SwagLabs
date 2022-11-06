@@ -1,4 +1,4 @@
-package pages;
+package pages.sauce_demo;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,12 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import pages.components.FooterComponent;
-import pages.components.HeaderComponent;
+import pages.sauce_demo.components.FooterComponent;
+import pages.sauce_demo.components.HeaderComponent;
 
 import java.util.List;
 
-public class SwagLabsInventoryPage extends BasePage{
+public class SwagLabsInventoryPage extends BasePage {
 
     public HeaderComponent headerComponent;
     FooterComponent footerComponent;
@@ -52,12 +52,21 @@ public class SwagLabsInventoryPage extends BasePage{
 
         for (int i = 0; i < menu.size(); i++) {
                 String item = menu.get(i).getText();
-                System.out.println("Menu item: " + item );
-                Thread.sleep(1000);
-                Assert.assertTrue(menu.get(i).isDisplayed(), menuItems[i]);
-                Assert.assertEquals(item, menuItems[i], "Menu item not displayed");
-                System.out.println("Menu item: " + item + " ,is displayed");
+            System.out.println("Menu item: " + item + " ,is displayed befote comparing");
+
+//                Assert.assertTrue(menu.get(i).isDisplayed(), menuItems[i]);
+                Thread.sleep(2000);
+                try {
+                    Assert.assertEquals(item, menuItems[i], "Menu item not displayed");
+                    System.out.println("Menu item I: " + item + " ,is displayed");
+                } catch (Exception e) {
+                        e.printStackTrace();
+                        Assert.assertEquals(item, menuItems[i], "Menu item not displayed");
+                        System.out.println("Menu item II: " + item + " ,is displayed");
+                    }
+
+                    }
+
 
         }
     }
-}
