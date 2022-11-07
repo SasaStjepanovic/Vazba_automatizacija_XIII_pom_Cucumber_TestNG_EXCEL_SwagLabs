@@ -3,16 +3,55 @@
 
 <suite name="Product tests" parallel="tests" thread-count="1">
 
-    <parameter name="browser" value="CHROME_H"/>
+    <parameter name="browser" value="CHROME"/>
     <parameter name="env" value="QA"/>
     <parameter name="wait" value="10"/>
     <parameter name="ScrShootName" value="ScrShotBefore"/>
     <parameter name="ScrShootDesc" value="ScreenShot will be happen after the web page would be open "/>
     <parameter name="ScrYesOrNo" value="YES"/>
+    <parameter name="fileName" value="SwagLabsData"/>
+    <parameter name="sheetName" value="SwagLabs"/>
 
-    <test name="SwagLabsTest">
+    <test name="SwagLabsTest Login valid 1">
+        <parameter name="rowNum" value="1"/>
         <classes>
-            <class name="runners.sauce_demo.Runner"/>
+            <class name="tests.sauce_demo.SwagLabsTestLogin"/>
+        </classes>
+    </test>
+    <test name="SwagLabsTest Login valid 2">
+        <parameter name="rowNum" value="3"/>
+        <classes>
+            <class name="tests.sauce_demo.SwagLabsTestLogin"/>
+        </classes>
+    </test>
+    <test name="SwagLabsTest Login valid 3">
+        <parameter name="rowNum" value="4"/>
+        <classes>
+            <class name="tests.sauce_demo.SwagLabsTestLogin"/>
+        </classes>
+    </test>
+    <test name="SwagLabsTest Login invalid 1">
+        <parameter name="rowNum" value="2"/>
+        <classes>
+            <class name="tests.sauce_demo.SwagLabsTestLogin"/>
+        </classes>
+    </test>
+    <test name="SwagLabsTest Login invalid 2">
+        <parameter name="rowNum" value="5"/>
+        <classes>
+            <class name="tests.sauce_demo.SwagLabsTestLogin"/>
+        </classes>
+    </test>
+    <test name="SwagLabsTest Login invalid 3">
+        <parameter name="rowNum" value="6"/>
+        <classes>
+            <class name="tests.sauce_demo.SwagLabsTestLogin"/>
+        </classes>
+    </test>
+    <test name="SwagLabsTest Login invalid 4">
+        <parameter name="rowNum" value="7"/>
+        <classes>
+            <class name="tests.sauce_demo.SwagLabsTestLogin"/>
         </classes>
     </test>
 

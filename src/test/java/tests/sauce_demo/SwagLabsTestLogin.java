@@ -1,16 +1,22 @@
 package tests.sauce_demo;
 
+import excel.ExcelSupport;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.sauce_demo.BasePage;
 import pages.sauce_demo.SwagLabsLoginPage;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class SwagLabsTestLogin extends BaseTest {
 
+    Map<String, String> data;
+
     @BeforeMethod
+    @Parameters({"browser", "env"})
     public void setup(String browser, String env) throws Exception {
         init(browser);
         openApp(env);
@@ -18,20 +24,17 @@ public class SwagLabsTestLogin extends BaseTest {
 
     @AfterMethod
     public void tearDown() throws IOException {
-        new BasePage(driver).reportScreenshot("Prvi_Screenshot", "Ovo je moj prvi description ikada", "yes");
+
+//        new BasePage(driver).reportScreenshot("Prvi_Screenshot", "Ovo je moj prvi description ikada", "yes");
         quit();
     }
 
     @Test(enabled = true, priority = 1)
-    public void swagLabsLoginValid() throws InterruptedException {
-        new SwagLabsLoginPage(driver).login("standard_user","secret_sauce", "PRODUCTS", "positive");
+    @Parameters({"fileName", "sheetName", "rowNum"})
+    public void swagLabsLoginValid(String fileName, String sheetName, String rowNum) throws InterruptedException, IOException {
+        data = new ExcelSupport().getExcelRow(fileName, sheetName, rowNum);
+        new SwagLabsLoginPage(driver).login( data.get("username"),data.get("password"), data.get("testType"), data.get("expectedText"));
+
     }
-
-    @Test(enabled = true, priority = 2)
-    public void swagLabsLoginInvalid() throws InterruptedException {
-        new SwagLabsLoginPage(driver).login("locked_out_user","secret_sauce", "Epic sadface: Sorry, this user has been locked out.", "negative");
-    }
-
-
 
 }
