@@ -8,7 +8,7 @@
     <parameter name="wait" value="10"/>
     <parameter name="ScrShootName" value="ScrShotBefore"/>
     <parameter name="ScrShootDesc" value="ScreenShot will be happen after the web page would be open "/>
-    <parameter name="ScrYesOrNo" value="Yes"/>
+    <parameter name="ScrYesOrNo" value="YES"/>
 
     <test name="SwagLabsTest">
         <classes>

@@ -20,7 +20,7 @@ import java.util.Random;
 public class BasePage {
 
     public WebDriver driver;
-    int waitTime = 30;
+    int waitTime = 45;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -124,7 +124,7 @@ public class BasePage {
     }
 
     public void reportScreenshot(String name, String desc, String yesOrNo) throws IOException {
-        if(yesOrNo.equalsIgnoreCase("Yes")) {
+        if(yesOrNo.equalsIgnoreCase("YES")) {
             takeScreenshot(name, yesOrNo);
             Path path = Paths.get("src/results/screenshots/"+name+".png");
             InputStream is = Files.newInputStream(path);
