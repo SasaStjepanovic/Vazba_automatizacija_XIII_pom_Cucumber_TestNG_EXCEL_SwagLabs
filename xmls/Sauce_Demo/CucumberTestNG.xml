@@ -54,5 +54,17 @@
             <class name="tests.sauce_demo.SwagLabsTestLogin"/>
         </classes>
     </test>
+<!--    <test name="SwagLabsTest Logout">-->
+<!--        <parameter name="rowNum" value="1"/>-->
+<!--        <classes>-->
+<!--            <class name="tests.sauce_demo.SwagLabsTestLogout"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="SwagLabsTest ent to end ">-->
+<!--        <parameter name="rowNum" value="1"/>-->
+<!--        <classes>-->
+<!--            <class name="tests.sauce_demo.SwagLabsTestEndToEnd"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 </suite>

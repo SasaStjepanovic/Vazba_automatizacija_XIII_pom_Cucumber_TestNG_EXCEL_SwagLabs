@@ -28,7 +28,7 @@ public class BaseSteps extends BaseTest {
     public void setup() throws Exception {
         init(browser);
         openApp(env);
-//        new BasePage(driver).reportScreenshot(ScrShootName, ScrShootDesc, ScrYesOrNo);
+        new BasePage(driver).reportScreenshot(ScrShootName, ScrShootDesc, ScrYesOrNo);
     }
 
     @After

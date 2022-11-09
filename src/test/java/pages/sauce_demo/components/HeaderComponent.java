@@ -36,6 +36,14 @@ public class HeaderComponent extends BasePage {
     @FindBy(xpath = "//span[text()='Products']")
     WebElement logoutDescriptionFail;
 
+    @FindBy(css = ".bm-item-list>a")
+    WebElement allItemButton;
+
+    public void clickAllButton(String expectedText){
+        clickElement(allItemButton, "Log for ALL ITEMS button: ");
+        compareText(allItemButton,expectedText.toUpperCase());
+    }
+
     public void clickMenu(){
         clickElement(menu,"Menu button");
     }
