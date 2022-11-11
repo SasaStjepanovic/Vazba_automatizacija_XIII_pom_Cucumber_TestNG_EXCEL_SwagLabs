@@ -115,18 +115,27 @@ public class BasePage {
         javascriptExecutor.executeScript("window.scrollBy("+x+","+y+")");
     }
 
-    public void takeScreenshot(String name, String yesNo) throws IOException {
+    // Ovaj scrshot metod je odvojen i koristi
+    public void takeScreenshotWithTimeStamps(String name, String yesNo) throws IOException {
         if(yesNo.equalsIgnoreCase("YES")) {
-            File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             long finish = System.currentTimeMillis();
-            FileUtils.copyFile(file, new File("src/results/screenshots/" + name + "_" +finish+ ".png"));
+            File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(file, new File("src/results/screenshots/" +name+"_"+finish+".png"));
         }
     }
 
-    public void reportScreenshot(String name, String desc, String yesOrNo) throws IOException {
+    public void takeScreenshot(String name, String yesNo) throws IOException {
+        if(yesNo.equalsIgnoreCase("YES")) {
+            File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(file, new File("src/results/screenshots/"+name+".png"));
+        }
+    }
+
+    public void reportScreenshotAllure(String name, String desc, String yesOrNo) throws IOException {
         if(yesOrNo.equalsIgnoreCase("YES")) {
-            takeScreenshot(name, yesOrNo);
-            Path path = Paths.get("src/results/screenshots/"+name+".png");
+            long finish = System.currentTimeMillis();
+            takeScreenshot(name+ "_" +finish, yesOrNo);
+            Path path = Paths.get("src/results/screenshots/"+name+"_"+finish+".png");
             InputStream is = Files.newInputStream(path);
             Allure.addAttachment(desc,is);
         }

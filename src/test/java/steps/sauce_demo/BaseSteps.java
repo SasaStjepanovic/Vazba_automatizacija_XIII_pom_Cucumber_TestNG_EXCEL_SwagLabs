@@ -21,18 +21,20 @@ public class BaseSteps extends BaseTest {
 
     String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
     String env = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("env");
-    String ScrShootName = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("ScrShootName");
+    String ScrShoot1 = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("ScrShoot1");
+    String ScrShoot2 = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("ScrShoot2");
     String ScrShootDesc = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("ScrShootDesc");
     String ScrYesOrNo = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("ScrYesOrNo");
     @Before
     public void setup() throws Exception {
         init(browser);
         openApp(env);
-        new BasePage(driver).reportScreenshot(ScrShootName, ScrShootDesc, ScrYesOrNo);
+        new BasePage(driver).reportScreenshotAllure(ScrShoot1, ScrShootDesc, ScrYesOrNo);
     }
 
     @After
-    public void tearDown() {
+    public void tearDown() throws IOException {
+        new BasePage(driver).takeScreenshotWithTimeStamps(ScrShoot2, ScrYesOrNo);
         quit();
     }
 

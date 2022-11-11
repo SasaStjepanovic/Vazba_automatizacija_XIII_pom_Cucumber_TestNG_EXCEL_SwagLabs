@@ -16,11 +16,10 @@ public class SwagLabsTestLogin extends BaseTest {
     Map<String, String> data;
 
     @BeforeMethod
-    @Parameters({"browser", "env", "ScrShootName", "ScrShootDesc", "ScrYesOrNo"})
-    public void setup(String browser, String env,String ScrShootName,String ScrShootDesc,String ScrYesOrNo) throws Exception {
+    @Parameters({"browser", "env"})
+    public void setup(String browser, String env) throws Exception {
         init(browser);
         openApp(env);
-        new BasePage(driver).reportScreenshot(ScrShootName, ScrShootDesc, ScrYesOrNo);
     }
 
     @AfterMethod
